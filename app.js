@@ -2,11 +2,15 @@ const express = require('express');
 const app = express();
 const PORT = 3000;
 
-app.use('view engine', 'ejs');
-app.use('views', 'views');
+app.set('view engine', 'ejs');
+app.set('views', 'views');
 
 app.get('/index', function (req, resp){
     resp.send(`Hello World`);
+})
+
+app.get('/feedback', function (req, resp){
+    resp.render('client/feed-back');
 })
 
 app.listen(PORT, function (){
