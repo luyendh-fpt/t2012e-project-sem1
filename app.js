@@ -2,10 +2,11 @@ const express = require('express');
 const app = express();
 const PORT = 3000;
 
-app.set('view engine', 'ejs');
-app.set('views', 'views');
+app.use(express.static('public'))
+app.set('view engine', 'ejs'); // sử dụng ejs làm view engine chính.
+app.set('views', 'views'); // sử dụng thư mục myviews để chứa các file ejs
 
-app.get('/index', function (req, resp){
+app.get('/index', function (req, resp) {
     resp.send(`Hello World`);
 })
 
@@ -13,6 +14,14 @@ app.get('/feedback', function (req, resp){
     resp.render('client/feed-back');
 })
 
-app.listen(PORT, function (){
+app.get('/contact', function (req, resp) {
+    resp.render('client/contact-us');
+})
+
+app.get('/map', function (req, resp) {
+    resp.render('client/google-map');
+})
+
+app.listen(PORT, function () {
     console.log(`Server start success! Port: ${PORT}`);
 })
