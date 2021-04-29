@@ -10,6 +10,10 @@ app.get('/index', function (req, resp) {
     resp.send(`Hello World`);
 })
 
+app.get('/feedback', function (req, resp){
+    resp.render('client/feed-back');
+})
+
 app.get('/contact', function (req, resp) {
     resp.render('client/contact-us');
 })
